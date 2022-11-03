@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "498105428723",
+    "project_id": "rnatapp-b9598",
+    "storage_bucket": "rnatapp-b9598.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498105428723:android:f931201b32c995ea34e586",
+        "android_client_info": {
+          "package_name": "com.rnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498105428723-ij7vqllidmgfbsbimjbj1656ofri0cje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkJ7mOrZXJFv06FHIOheM9RD0rIjUcfM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498105428723-ij7vqllidmgfbsbimjbj1656ofri0cje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
