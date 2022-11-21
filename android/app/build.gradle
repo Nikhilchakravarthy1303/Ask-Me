@@ -25,7 +25,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
  *   bundleCommand: "ram-bundle",
  *
  *   // whether to bundle JS and assets in debug mode
- *   bundleInDebug: false,
+ *   bundleInDebug: true,
  *
  *   // whether to bundle JS and assets in release mode
  *   bundleInRelease: true,
