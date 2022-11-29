@@ -79,18 +79,11 @@ const SignupScreen = ({navigation}) => {
 
     <Password
         labelValue={password}
-        onChangeText={() => {}}
+        onChangeText={(userPassword) => setPassword(userPassword)}
         placeholderText="Enter Password"
         iconType="lock"
-
       />
-      <Password
-          labelValue={password}
-          onChangeText={(userPassword) => setPassword(userPassword)}
-          placeholderText="Password"
-          iconType="lock"
 
-        />
 
       <FormButton
         buttonTitle="Sign Up"
@@ -100,36 +93,7 @@ const SignupScreen = ({navigation}) => {
     <Text style={{color:"red"}}>{message}</Text>
     </View>
 
-      <View style={styles.textPrivate}>
-        <Text style={styles.color_textPrivate}>
-          By registering, you confirm that you accept our{' '}
-        </Text>
-        <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
-          <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
-            Terms of service
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.color_textPrivate}> and </Text>
-        <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
-          Privacy Policy
-        </Text>
-      </View>
 
-      <SocialButton
-        buttonTitle='Sign Up with Facebook'
-        btnType="facebook"
-        color='#4867aa'
-        backgroundColor='#e6eaf4'
-        onPress={() => {}}
-        />
-
-        <SocialButton
-          buttonTitle='Sign Up with Google'
-          btnType="google"
-          color='#de4d41'
-          backgroundColor='#f5e7ea'
-          onPress={() => {}}
-          />
 
 
       <TouchableOpacity

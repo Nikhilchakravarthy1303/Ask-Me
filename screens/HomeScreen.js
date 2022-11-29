@@ -53,7 +53,7 @@ const Home = ({Email}) => {
                 <View style>
                 <Text style={{left:10,color:"black"}}>{item.item.message}</Text>
                 </View>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.navigate('Answer',{index:item.index})}>
                 <View style={{backgroundColor:"purple",marginHorizontal:130,borderRadius:10,left:120,top:7}}>
                 <Text style={{textAlign:"center",color:"white",borderRadius:5}}>Answer</Text>
                 </View>

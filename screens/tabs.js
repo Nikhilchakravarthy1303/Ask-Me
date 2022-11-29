@@ -7,6 +7,8 @@ import Forum from './ForumScreen.js';
 import EditScreen from './EditScreen.js';
 
 import AskScreen from './AskScreen.js';
+
+import Answer from './answer.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -30,6 +32,7 @@ const HomeStackScreen = ({Email}) => {
     <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="Home" children={() => <Home Email={email} />}/>
       <Stack.Screen  name="Ask" children={() => <AskScreen Email={email} />}/>
+      <Stack.Screen  name="Answer" children={() => <Answer Email={email} />}/>
     </Stack.Navigator>
   );
 }

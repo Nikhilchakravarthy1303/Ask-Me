@@ -11,30 +11,37 @@ const Forum = () => (
         <Icon name="folder" style={{color:"orange",left:15,top:10}} size={50} color="#900" />
       <Text style={styles.text}>  Forums</Text>
       </View>
-      <View style={{flexDirection:'row',borderWidth:2,borderBottomColor:"white"}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>1</Text>
-      </View>
-      <View style={{flexDirection:'row',marginVertical:15,borderWidth:2,borderBottomColor:"white"}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>5</Text>
-      </View>
-      <View style={{flexDirection:'row',marginVertical:15,borderWidth:2,borderBottomColor:"white"}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>Ask-Score</Text>
-      </View>
-      <View style={{flexDirection:'row',marginVertical:15}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>Gsoc</Text>
-      </View>
-      <View style={{flexDirection:'row',marginVertical:15}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>Go Social</Text>
-      </View>
-      <View style={{flexDirection:'row',marginVertical:15}}>
-        <Icon name="users" style={{color:"white",left:15,top:10}} size={40} color="#900" />
-        <Text style={{color:"white",fontSize:30,fontFamily:"Microbrew-Soft-Two-3D",position:"absolute",left:70,bottom:-40,marginVertical:30}}>New Room</Text>
-      </View>
+      <View style={{padding:10}}></View>
+
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
+    </View>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
+    </View>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
+    </View>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
+    </View>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
+    </View>
+
+
+
+
+
+
+
+
+
   </ImageBackground>
   </View>
 );
