@@ -16,21 +16,25 @@ import auth from '@react-native-firebase/auth';
 import {windowHeight, windowWidth} from '../utils/Dimentions';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Password from '../components/Password';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '../navigation/AuthProvider';
 
 
 const LoginScreen = ({navigation}) => {
-
+  const [status,setStatus] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [user,setUser] = useState();
   const [message, setMessage] = useState("");
+
+  const {login, googleLogin, fbLogin} = useContext(AuthContext);
   const handleLogin = async() => {
     try{
       if(email.length>0 && password.length>0)
       {
-        const isLogin  = await auth().signInWithEmailAndPassword(email,password);
+        login(email,password);
         setMessage("");
-        navigation.navigate("Profile",{email:isLogin.user.email});
+        // navigation.navigate("Profile",{Email:email});
       }
       else
       {
@@ -92,7 +96,7 @@ const LoginScreen = ({navigation}) => {
         </Text>
       </TouchableOpacity>
 
-    
+
 
 
       <TouchableOpacity

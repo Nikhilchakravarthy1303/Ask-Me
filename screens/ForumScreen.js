@@ -1,10 +1,31 @@
-import React from "react";
-import { ImageBackground, StyleSheet, Text, View,TouchableOpacity } from "react-native";
+import React,{useRef, useState, useEffect} from "react";
+import { AppState,ImageBackground, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 
-const Forum = () => (
+const Forum = () => {
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible,setAppStateVisible] = useState(appState.current);
+  useEffect(() => {
+   const subscription = AppState.addEventListener("change", nextAppState => {
+     if (
+       appState.current.match(/inactive|background/) &&
+       nextAppState === "active"
+     ) {
+       console.log("App has come to the foreground!");
+     }
+
+     appState.current = nextAppState;
+     setAppStateVisible(appState.current);
+     console.log("AppState", appState.current);
+   });
+
+   return () => {
+     subscription.remove();
+   };
+ }, []);
+  return(
   <View style={styles.container}>
     <ImageBackground source={require('../assets/images/homeback.jpg')} resizeMode="cover" style={styles.image}>
       <View style={{flexDirection:'row',backgroundColor:"black"}}>
@@ -33,6 +54,10 @@ const Forum = () => (
       <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
       <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
     </View>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>{appStateVisible}</Text>
+    </View>
 
 
 
@@ -45,6 +70,7 @@ const Forum = () => (
   </ImageBackground>
   </View>
 );
+}
 
 const styles = StyleSheet.create({
   container: {

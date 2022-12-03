@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
-
+import Auth from '@react-native-firebase/auth';
 
 
 const ProfileScreen = ({Email}) => {
@@ -64,7 +64,9 @@ const ProfileScreen = ({Email}) => {
       </View>
 
 
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={async() => {
+          await Auth().signOut();
+        }}>
       <View style={styles.iconup}>
       <Icon name="sign-out" style={{color:"orange"}} size={30} color="#900" />
       </View>
