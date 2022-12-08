@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useContext} from "react";
-import { ImageBackground, Image,StyleSheet, Text, View,TouchableOpacity,ScrollView,FlatList} from "react-native";
+import { ImageBackground, Image,StyleSheet, Text, View,TouchableOpacity,ScrollView,FlatList,Linking} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import axios from "axios";
@@ -27,7 +27,7 @@ const Github = () => {
                 if(item.item !== null)
                 {
                 return(
-
+                  <TouchableOpacity onPress={() => {Linking.openURL(item.item.html_url)}}>
                   <View style={{flexDirection:"row"}}>
                   <View style={{right:30,flexDirection:"column",backgroundColor:"#F0D1BF",marginVertical:10,flex:1,height:150,marginHorizontal:50,borderTopLeftRadius:10,borderBottomLeftRadius:10}}>
                     <Text style={{fontFamily:"Microbrew-Soft-Two-3D",fontSize:18,left:15,position: 'absolute',marginVertical:10,color:"black"}}>{item.item.name}</Text>
@@ -35,9 +35,9 @@ const Github = () => {
                     <Text numberOfLines={3} style={{fontSize:13,color:"black",top:60,position: 'absolute',left:15,right:30}}>{item.item.description}</Text>
                     <Text style={{color:"brown",top:120,position:"absolute",left:15,top:120,fontFamily:"Microbrew-Soft-Two-3D",fontSize:20}}>{item.item.language}</Text>
                   <Image style={{borderTopRightRadius:30,borderBottomRightRadius:30,left:260,bottom:2,width: 100,height: 150}} source={{uri: 'https://avatars.githubusercontent.com/u/5285159?v=4'}}/>
-
-              </View>
                   </View>
+                  </View>
+                  </TouchableOpacity>
 
                 );
               }
@@ -65,10 +65,11 @@ const Medium = () => {
         <ImageBackground source={require('../assets/images/lev.jpg')} resizeMode="cover" style={styles.image}>
         <ScrollView>
         <FlatList data={list} renderItem={(item) => {
+  
           if(item.item !== null)
           {
           return(
-
+            <TouchableOpacity onPress={() => { Linking.openURL(item.item.link)}}>
             <View style={{flexDirection:"row"}}>
             <View style={{right:30,flexDirection:"column",backgroundColor:"#F0D1BF",marginVertical:10,flex:1,height:150,marginHorizontal:50,borderTopLeftRadius:10,borderBottomLeftRadius:10}}>
               <Text numberOfLines={2} style={{fontSize:15,left:15,position: 'absolute',marginVertical:10,color:"black",right:40}}>{item.item.title}</Text>
@@ -76,9 +77,9 @@ const Medium = () => {
               <Text numberOfLines={3} style={{fontSize:13,color:"black",top:60,position: 'absolute',left:15,right:30}}>{item.item.author}</Text>
               <Text style={{color:"brown",top:120,position:"absolute",left:15,top:120,fontFamily:"Microbrew-Soft-Two-3D",fontSize:20}}>{item.item.pubDate}</Text>
             <Image style={{borderTopRightRadius:30,borderBottomRightRadius:30,left:260,bottom:2,width: 100,height: 150}} source={{uri: item.item.thumbnail}}/>
-
-        </View>
             </View>
+            </View>
+            </TouchableOpacity>
 
           );
         }

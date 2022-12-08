@@ -65,6 +65,9 @@ const ProfileScreen = ({Email}) => {
 
 
       <TouchableOpacity onPress={async() => {
+      await firestore().collection('users').doc(email).update({
+      status:false,
+    });
           await Auth().signOut();
         }}>
       <View style={styles.iconup}>

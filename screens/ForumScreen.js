@@ -1,10 +1,13 @@
 import React,{useRef, useState, useEffect} from "react";
 import { AppState,ImageBackground, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const Forum = () => {
+  const navigation = useNavigation();
+
   const appState = useRef(AppState.currentState);
   const [appStateVisible,setAppStateVisible] = useState(appState.current);
   useEffect(() => {
@@ -34,31 +37,13 @@ const Forum = () => {
       </View>
       <View style={{padding:10}}></View>
 
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
-    </View>
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
-    </View>
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
-    </View>
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
-    </View>
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>nikhil</Text>
-    </View>
-    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
-      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
-      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>{appStateVisible}</Text>
-    </View>
 
+<TouchableOpacity onPress={() => navigation.navigate('Users')}>
+    <View style={{marginHorizontal:20,borderRadius:20,backgroundColor:"lightblue",marginVertical:10,height:50}}>
+      <Icon name="users" style={{color:"black",left:30,top:10}} size={30} color="#900" />
+      <Text style={{justifyContent:"center",bottom:25,marginHorizontal:30,borderRadius:20,color:"black",textAlign:"center",fontSize:30,fontFamily:'Microbrew-Soft-Two-3D'}}>users</Text>
+    </View>
+</TouchableOpacity>
 
 
 

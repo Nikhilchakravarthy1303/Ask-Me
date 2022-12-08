@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useContext} from "react";
-import { ImageBackground, StyleSheet, Text, View ,TextInput,ScrollView,TouchableOpacity} from "react-native";
+import { ImageBackground, StyleSheet, Text, View ,TextInput,ScrollView,TouchableOpacity,FlatList} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import firestore from '@react-native-firebase/firestore';
 import database from '@react-native-firebase/database';
@@ -13,11 +13,9 @@ const Answer = ({Email}) => {
   const [query,setQuery] = useState("");
   const [currentDate, setCurrentDate] = useState('');
   const [data,setData] = useState("");
+  const [list,setList] = useState(null);
   const route = useRoute();
   const index = route.params.index;
-  console.log(index);
-  console.log(email);
-  console.log(name);
   useEffect(() => {getDataBase()},[])
 
     useEffect(() => {getdatabase()},[])
@@ -27,6 +25,37 @@ const Answer = ({Email}) => {
       .ref(`query/${index}`)
       .on("value",(tempData)=>{
       setData(tempData.val());
+      });
+
+
+    }
+    catch(e)
+    {
+      console.log(e);
+    }
+  };
+  useEffect(() => {getAnswers()},[])
+const getAnswers = async() => {
+  try{
+    const data = await database()
+    .ref(`query/${index}/answers`)
+    .on("value",(tempData)=>{
+    setList(tempData.val());
+    });
+
+
+  }
+  catch(e)
+  {
+    console.log(e);
+  }
+};
+  const updateDataBase = async() => {
+    try{
+      const data = await database()
+      .ref(`query/${index}`)
+      .update({
+        answer:query,
       });
 
 
@@ -50,6 +79,8 @@ const Answer = ({Email}) => {
       console.log(e);
     }
   }
+
+
   return(
   <View style={styles.container}>
     <ImageBackground source={require("../assets/images/bubble.jpg")} resizeMode="cover" style={styles.image}>
@@ -62,23 +93,29 @@ const Answer = ({Email}) => {
 
       <View style={{padding:80}}></View>
       <View style={{flexDirection:"column"}}>
-      <View style={{backgroundColor:"black",borderRadius:10,marginHorizontal:65,right:50}}>
-      <Text style={{textAlign:"center",right:30,fontSize:25,color:"lightblue",fontFamily:"Futura-CondensedLight"}}>{name}</Text>
+      <View style={{backgroundColor:"black",borderRadius:10,marginHorizontal:65,right:55}}>
+      <Text style={{textAlign:"center",right:30,fontSize:20,color:"white",fontFamily:"Microbrew-Soft-Two-3D"}}>{data.name}</Text>
       </View>
-      <View style={{backgroundColor:"lightblue",borderRadius:15,marginHorizontal:10}}>
+      <View style={{backgroundColor:"pink",borderRadius:10,marginHorizontal:10}}>
       <Text style={{textAlign:"center",fontSize:30,color:"black",fontFamily:"Futura-CondensedLight"}}>{data.message}</Text>
       </View>
+
       </View>
       <View style={{backgroundColor:"orange",marginVertical:15,borderRadius:15,marginHorizontal:10}}>
       <TextInput style={{textAlign:"center",fontSize:30,color:"black",fontFamily:"Futura-CondensedLight"}}   placeholder='Answer' placeholderTextColor="black" onChangeText={(value) => setQuery(value)}/>
       </View>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => {updateDataBase()}}>
       <View style={{backgroundColor:"white",marginVertical:10,borderRadius:15,marginHorizontal:100}}>
       <Text style={{color:"purple",fontSize:30,textAlign:"center",fontFamily:"Microbrew-Soft-Two-3D",marginVertical:10,marginHorizontal:10}}>Answer</Text>
       </View>
       </TouchableOpacity>
 
+      <ScrollView style={{}}>
+        <FlatList data={list} renderItem={(item) => {
 
+            }}/>
+          <View style={{padding:100}}></View>
+    </ScrollView>
 
 
 

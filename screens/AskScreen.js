@@ -26,6 +26,7 @@ const AskScreen = ({Email}) => {
               name: name,
               message: query,
               curretTime: moment().utcOffset('+05:30').format('MMMM Do YYYY, h:mm:ss a'),
+              mail:email,
             });
             console.log(write);
       }

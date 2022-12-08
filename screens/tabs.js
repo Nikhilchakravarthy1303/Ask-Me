@@ -5,7 +5,7 @@ import ProfileScreen from './ProfilebScreen.js';
 import Home from './HomeScreen.js';
 import Forum from './ForumScreen.js';
 import EditScreen from './EditScreen.js';
-
+import UserScreen from './UsersScreen.js'
 import AskScreen from './AskScreen.js';
 
 import Answer from './answer.js';
@@ -36,6 +36,16 @@ const HomeStackScreen = ({Email}) => {
     </Stack.Navigator>
   );
 }
+const ForumStackScreen = ({Email}) => {
+  const email = Email;
+  return(
+    <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="Forums" children={() => <Forum Email={email} />}/>
+      <Stack.Screen name="Users" children={() => <UserScreen Email={email} />}/>
+
+    </Stack.Navigator>
+  );
+}
 const Tabs = ({Email}) => {
   const email=Email;
 
@@ -43,7 +53,7 @@ const Tabs = ({Email}) => {
     <NavigationContainer  independent={true}>
     <Tab.Navigator  screenOptions={{tabBarActiveTintColor:"brown",tabBarInactiveTintColor:"black",tabBarHideOnKeyboard: true,headerShown: false,tabBarShowLabel:false,tabBarStyle:{position:"absolute",bottom:25,left:20,right:20,elevation:0,borderRadius:15,height:70,backgroundColor:"orange"}}}>
       <Tab.Screen name="Home" children={() => <HomeStackScreen Email={email}/>} options={{tabBarIcon:({color})=>(<Icon name="home" style={{}} size={30} color={color} />)}}/>
-      <Tab.Screen name="Forums" component={Forum} options={{tabBarIcon:({color})=>(<Icon name="folder" style={{}} size={30} color={color} />)}}/>
+      <Tab.Screen name="Forums" children={() => <ForumStackScreen Email={email}/>} options={{tabBarIcon:({color})=>(<Icon name="folder" style={{}} size={30} color={color} />)}}/>
       <Tab.Screen name="Notifications" component={Notification} options={{tabBarIcon:({color})=>(<Icon name="bell" style={{}} size={30} color={color} />)}}/>
       <Tab.Screen name="Profile" children={() => <ProfileStackScreen Email={email} />} options={{tabBarIcon:({color})=>(<Icon name="user" style={{}} size={30} color={color} />)}}/>
     </Tab.Navigator>
