@@ -16,6 +16,7 @@ const Answer = ({Email}) => {
   const [list,setList] = useState(null);
   const route = useRoute();
   const index = route.params.index;
+  const [length,setLength] = useState(null);
   useEffect(() => {getDataBase()},[])
 
     useEffect(() => {getdatabase()},[])
@@ -25,6 +26,13 @@ const Answer = ({Email}) => {
       .ref(`query/${index}`)
       .on("value",(tempData)=>{
       setData(tempData.val());
+      if(tempData.val().answer == undefined)
+      {
+        setLength(0);
+      }
+      else{
+        setLength(tempData.val().answer.length);
+      }
       });
 
 
@@ -38,7 +46,7 @@ const Answer = ({Email}) => {
 const getAnswers = async() => {
   try{
     const data = await database()
-    .ref(`query/${index}/answers`)
+    .ref(`query/${index}/answer`)
     .on("value",(tempData)=>{
     setList(tempData.val());
     });
@@ -50,21 +58,22 @@ const getAnswers = async() => {
     console.log(e);
   }
 };
-  const updateDataBase = async() => {
-    try{
-      const data = await database()
-      .ref(`query/${index}`)
-      .update({
-        answer:query,
-      });
-
-
+console.log(list);
+const updateDataBase = async() => {
+  try{
+     const write = await database()
+      .ref(`query/${index}/answer/${length}`)
+      .set({
+            name: name,
+            answers:query
+          });
+          console.log(write);
     }
-    catch(e)
-    {
-      console.log(e);
-    }
-  };
+  catch(e)
+  {
+    console.log(e);
+  }
+}
 
   const getdatabase = async()=>{
     try{
@@ -112,7 +121,17 @@ const getAnswers = async() => {
 
       <ScrollView style={{}}>
         <FlatList data={list} renderItem={(item) => {
+            return(
+              <View style={{flexDirection:"column",marginVertical:10}}>
+              <View style={{backgroundColor:"black",borderRadius:10,marginHorizontal:65,right:55}}>
+              <Text style={{textAlign:"center",right:30,fontSize:20,color:"white",fontFamily:"Microbrew-Soft-Two-3D"}}>{item.item.name}</Text>
+              </View>
+              <View style={{backgroundColor:"yellow",borderRadius:10,marginHorizontal:10}}>
+              <Text style={{textAlign:"center",fontSize:30,color:"purple",fontFamily:"Futura-CondensedLight"}}>{item.item.answers}</Text>
+              </View>
+              </View>
 
+            );
             }}/>
           <View style={{padding:100}}></View>
     </ScrollView>
